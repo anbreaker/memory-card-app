@@ -66,12 +66,13 @@ class GameView extends i18nMixin(LitElement) {
   removeClassForHtmlElement(element, className) {
     // Wait 1 second before removing the class
     setTimeout(() => {
-      element.classList.remove(className);
-
       // TODO change for message error UI
       if (className === CARD_STATES.WRONG) {
         alert('Game Over!');
       }
+
+      if (!className) return;
+      element.classList.remove(className);
     }, 1000);
   }
 
@@ -81,7 +82,7 @@ class GameView extends i18nMixin(LitElement) {
     const card = this.shadowRoot.querySelectorAll('.card')[index];
 
     if (result) {
-      card.classList.add(card, CARD_STATES.CORRECT);
+      card.classList.add(CARD_STATES.CORRECT);
 
       this.removeClassForHtmlElement(CARD_STATES.CORRECT);
     } else {
@@ -102,7 +103,7 @@ class GameView extends i18nMixin(LitElement) {
         <p>${this.t('gameView.points')} ${this.points}</p>
         <label>
           ${this.t('gameView.level')}
-          <select @change="${this.handleLevelChange}">
+          <select class="level" @change="${this.handleLevelChange}">
             ${DIFFICULTY_LEVEL.map(
               (level) => html`
                 <option value="${level}" ?selected="${this.level === level}">
