@@ -62,7 +62,8 @@ export class CountdownTimer extends i18nMixin(LitElement) {
     return html`
       <div>
         <span class="label">${this.t('countdownTimer.timer')}</span>
-        <span class="timer">${this.time} ${this.t('countdownTimer.seconds')}</span>
+        <span class="timer">${this.time}</span>
+        <span>${this.t('countdownTimer.seconds')}</span>
       </div>
     `;
   }

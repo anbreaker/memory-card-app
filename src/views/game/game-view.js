@@ -74,7 +74,7 @@ class GameView extends i18nMixin(LitElement) {
 
   initCountdownTimer() {
     // time according to level selected
-    const timeLimit = LEVELS[this.level].speed;
+    const timeLimit = LEVELS[this.level]?.speed;
 
     const timerElement = this.shadowRoot.querySelector('countdown-timer');
 
