@@ -4,8 +4,8 @@ import { css } from 'lit';
  * CSS styles for the TimerGame component.
  */
 export default css`
-  :host {
-    display: block;
+  .label {
+    margin-right: 0.5rem;
   }
 
   .timer {

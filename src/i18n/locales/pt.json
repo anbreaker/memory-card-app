@@ -1,4 +1,8 @@
 {
+  "countdownTimer": {
+    "seconds": "segundos",
+    "timer": "Temporizador: "
+  },
   "gameView": {
     "easy": "Fácil",
     "hard": "Difícil",

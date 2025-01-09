@@ -6,9 +6,16 @@ import i18n from '../../i18n/i18n.js';
 
 // Components
 import '../../components/btn-action/btn-action.js';
+import '../../components/countdown-timer/countdown-timer.js';
 
 // Constants
-import { CARD_STATES, DEFAULT_LEVEL, DEFAULT_PLAYER_NAME, DIFFICULTY_LEVEL } from '../../constants/game-constants.js';
+import {
+  CARD_STATES,
+  DEFAULT_LEVEL,
+  DEFAULT_PLAYER_NAME,
+  DIFFICULTY_LEVEL,
+  LEVELS,
+} from '../../constants/game-constants.js';
 
 // Logic from the game
 import { GameLogic } from '../../logic/game-logic.js';
@@ -61,6 +68,18 @@ class GameView extends i18nMixin(LitElement) {
 
   startGame() {
     this.gameLogic.startGame();
+
+    this.initCountdownTimer();
+  }
+
+  initCountdownTimer() {
+    // time according to level selected
+    const timeLimit = LEVELS[this.level].speed;
+
+    const timerElement = this.shadowRoot.querySelector('countdown-timer');
+
+    timerElement.time = timeLimit; // Update timer time
+    timerElement.startCountdown(); // Starts the timer
   }
 
   removeClassForHtmlElement(element, className) {
@@ -77,9 +96,9 @@ class GameView extends i18nMixin(LitElement) {
   }
 
   handleCardClick(index) {
-    const result = this.gameLogic.handleCardClick(index);
-
     const card = this.shadowRoot.querySelectorAll('.card')[index];
+
+    const result = this.gameLogic.handleCardClick(index);
 
     if (result) {
       card.classList.add(CARD_STATES.CORRECT);
@@ -101,6 +120,8 @@ class GameView extends i18nMixin(LitElement) {
       <div>
         <h1>${this.t('gameView.welcome')} ${this.playerName} 🙋</h1>
         <p>${this.t('gameView.points')} ${this.points}</p>
+        <countdown-timer></countdown-timer>
+
         <label>
           ${this.t('gameView.level')}
           <select class="level" @change="${this.handleLevelChange}">

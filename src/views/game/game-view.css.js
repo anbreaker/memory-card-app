@@ -27,6 +27,7 @@ export default css`
 
   .card.visible {
     background-color: transparent;
+    pointer-events: none; /* Block clicks without Js*/
   }
 
   .card.correct {

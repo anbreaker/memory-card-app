@@ -22,11 +22,4 @@ export default css`
     right: 1.25rem;
     top: 1.25rem;
   }
-
-  @media (min-width: 600px) and (max-width: 900px) {
-    .select-language {
-      right: 0.5rem;
-      top: 0rem;
-    }
-  }
 `;
