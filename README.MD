@@ -77,7 +77,6 @@ The coverage report will be generated in the coverage folder. You can open the i
 ├── README.MD
 ├── public
 │   └── images
-│       ├── favicon.webp
 │       └── memory.webp
 ├── src
 │   ├── app-root.css.js
@@ -89,15 +88,15 @@ The coverage report will be generated in the coverage folder. You can open the i
 │   │   ├── btn-action
 │   │   │   ├── btn-action.css.js
 │   │   │   └── btn-action.js
+│   │   ├── countdown-timer
+│   │   │   ├── countdown-timer.css.js
+│   │   │   └── countdown-timer.js
 │   │   ├── error-message
 │   │   │   ├── error-message.css.js
 │   │   │   └── error-message.js
-│   │   ├── language-selector
-│   │   │   ├── language-selector.css.js
-│   │   │   └── language-selector.js
-│   │   └── timer-game
-│   │       ├── timer-game.css.js
-│   │       └── timer-game.js
+│   │   └── language-selector
+│   │       ├── language-selector.css.js
+│   │       └── language-selector.js
 │   ├── constants
 │   │   ├── game-constants.js
 │   │   └── language-constants.js
@@ -125,12 +124,12 @@ The coverage report will be generated in the coverage folder. You can open the i
 │   │   │   └── animated-wave-background.test.js
 │   │   ├── btn-action
 │   │   │   └── btn-action.test.js
+│   │   ├── countdown-timer
+│   │   │   └── countdown-timer.test.js
 │   │   ├── error-message
 │   │   │   └── error-message.test.js
-│   │   ├── language-selector
-│   │   │   └── language-selector.test.js
-│   │   └── timer-game
-│   │       └── timer-game.test.js
+│   │   └── language-selector
+│   │       └── language-selector.test.js
 │   ├── i18n
 │   │   └── i18n.test.js
 │   └── views
