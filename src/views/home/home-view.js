@@ -73,6 +73,22 @@ class HomeView extends i18nMixin(LitElement) {
     window.location.href = '/game';
   }
 
+  /**
+   * Renders the home view template.
+   *
+   * @returns {TemplateResult} The HTML template for the home view.
+   *
+   * @this {LitElement}
+   * @memberof HomeView
+   *
+   * @description
+   * This method returns an HTML template for the home view, which includes:
+   * - A section element containing:
+   *   - An h1 element displaying the title.
+   *   - An input element for the player's name with event listeners for focus and input events.
+   *   - An error-message custom element.
+   *   - A btn-action custom element with a click event listener to start the game.
+   */
   render() {
     return html`
       <section>
