@@ -30,7 +30,7 @@ describe('GameView', () => {
     document.body.appendChild(element);
   });
 
-  test('renders player name and points', () => {
+  test('should render player name and points', () => {
     const welcomeMessage = element.shadowRoot.querySelector('h1');
     expect(welcomeMessage).to.exist;
     expect(welcomeMessage.textContent).to.include('Test Player');
@@ -40,8 +40,8 @@ describe('GameView', () => {
     expect(points.textContent).to.include('0');
   });
 
-  test('renders difficulty level select', () => {
-    const select = element.shadowRoot.querySelector('#level');
+  test('ahould render difficulty level select', () => {
+    const select = element.shadowRoot.querySelector('.level');
     expect(select).to.exist;
 
     const options = select.querySelectorAll('option');
@@ -49,7 +49,7 @@ describe('GameView', () => {
     expect([...options].map((opt) => opt.value)).to.deep.equal(DIFFICULTY_LEVEL);
   });
 
-  test('renders start button', () => {
+  test('should render start button', () => {
     const button = element.shadowRoot.querySelector('btn-action');
     expect(button).to.exist;
     expect(button.getAttribute('text')).to.equal(element.t('gameView.play'));
@@ -62,7 +62,7 @@ describe('GameView', () => {
     expect(element.gameLogic.startGame).toHaveBeenCalled();
   });
 
-  test('handles card click correctly', async () => {
+  test('should handle card click correctly', async () => {
     element.numbers = [1, 2, 3];
     element.isGameStarted = true;
     element.visibleNumbers = true;
@@ -79,7 +79,7 @@ describe('GameView', () => {
     expect(cards[0].classList.contains(CARD_STATES.CORRECT)).to.be.true;
   });
 
-  test('renders game board when game is started', () => {
+  test('Should render game board when game is started', () => {
     element.isGameStarted = true;
     element.numbers = [1, 2, 3];
     element.visibleNumbers = true;
