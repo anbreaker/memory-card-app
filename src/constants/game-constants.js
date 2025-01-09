@@ -24,6 +24,16 @@ export const LEVELS = {
 export const CARD_BOX = 9;
 
 /**
+ * Enum for card states.
+ * @readonly
+ * @enum {string}
+ */
+export const CARD_STATES = {
+  CORRECT: 'correct',
+  WRONG: 'wrong',
+};
+
+/**
  * The default difficulty level for the game.
  * @constant {string}
  */

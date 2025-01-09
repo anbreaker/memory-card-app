@@ -4,27 +4,17 @@ import { LitElement, html } from 'lit';
 import { i18nMixin } from '../../mixins/i18n-mixin.js';
 import i18n from '../../i18n/i18n.js';
 
-// TODO
-// Logic from the game
-// import { GameLogic } from '../../logic/game-logic.js';
-
 // Components
 import '../../components/btn-action/btn-action.js';
 
-// Styles
-import gameStyles from './game-view.css.js';
-
 // Constants
-import {
-  CARD_BOX,
-  DEFAULT_LEVEL,
-  DEFAULT_PLAYER_NAME,
-  DIFFICULTY_LEVEL,
-  LEVELS,
-} from '../../constants/game-constants.js';
+import { CARD_STATES, DEFAULT_LEVEL, DEFAULT_PLAYER_NAME, DIFFICULTY_LEVEL } from '../../constants/game-constants.js';
 
 // Logic from the game
-// TODO separate the logic from the view
+import { GameLogic } from '../../logic/game-logic.js';
+
+// Styles
+import gameStyles from './game-view.css.js';
 
 class GameView extends i18nMixin(LitElement) {
   static get styles() {
@@ -34,107 +24,85 @@ class GameView extends i18nMixin(LitElement) {
   static get properties() {
     return {
       currentNumber: { type: Number },
-      difficulty: { type: String },
       isGameStarted: { type: Boolean },
       level: { type: String },
       numbers: { type: Array },
       playerName: { type: String },
       points: { type: Number },
-      timeLimit: { type: Number },
       visibleNumbers: { type: Boolean },
     };
   }
 
   constructor() {
     super();
-
-    this.currentNumber = null;
-    this.isGameStarted = false;
-    this.level = DEFAULT_LEVEL;
-    this.numbers = [];
-    this.playerName = DEFAULT_PLAYER_NAME;
-    this.points = 0;
+    const playerName = localStorage.getItem('playerName') || DEFAULT_PLAYER_NAME;
+    this.gameLogic = new GameLogic(playerName, DEFAULT_LEVEL);
     this.t = i18n.t;
-    this.timeLimit = LEVELS[this.level].speed;
-    this.visibleNumbers = false;
+
+    // Synchronize initial status
+    this.syncWithLogic();
+
+    // Listening for level status change events
+    this.gameLogic.addEventListener('level-change', () => this.syncWithLogic());
   }
 
-  // Start the game and generate a new board
+  syncWithLogic() {
+    this.currentNumber = this.gameLogic.currentNumber;
+    this.isGameStarted = this.gameLogic.isGameStarted;
+    this.level = this.gameLogic.level;
+
+    // Ensures reactivity by copying the array
+    this.numbers = [...this.gameLogic.numbers];
+
+    this.playerName = this.gameLogic.playerName;
+    this.points = this.gameLogic.points;
+    this.visibleNumbers = this.gameLogic.visibleNumbers;
+  }
+
   startGame() {
-    this.isGameStarted = true;
-    this.points = 0;
-    this.generateBoard();
+    this.gameLogic.startGame();
   }
 
-  generateShuffledNumbers(length) {
-    const numbers = Array.from({ length }, (_, i) => i + 1);
-
-    return numbers.sort(() => Math.random() - 0.5);
-  }
-
-  // Generate a new board with shuffled numbers and set a random number to remember
-  generateBoard() {
-    const numbers = this.generateShuffledNumbers(CARD_BOX);
-
-    this.numbers = numbers;
-    this.currentNumber = numbers[Math.floor(Math.random() * CARD_BOX)];
-    this.timeLimit = LEVELS[this.level].speed;
-
-    // Show numbers for a limited time based on difficulty
-    this.visibleNumbers = true;
-
-    // After the time limit, hide the numbers and enable click
+  removeClassForHtmlElement(element, className) {
+    // Wait 1 second before removing the class
     setTimeout(() => {
-      this.visibleNumbers = false;
-    }, this.timeLimit * 1000);
+      element.classList.remove(className);
+
+      // TODO change for message error UI
+      if (className === CARD_STATES.WRONG) {
+        alert('Game Over!');
+      }
+    }, 1000);
   }
 
-  // Handle the card click event
   handleCardClick(index) {
-    // Disable clicks if numbers are visible
-    if (!this.isGameStarted || this.visibleNumbers) return;
+    const result = this.gameLogic.handleCardClick(index);
 
     const card = this.shadowRoot.querySelectorAll('.card')[index];
-    const isCorrect = this.numbers[index] === this.currentNumber;
 
-    // If the player clicks the correct card
-    if (isCorrect) {
-      card.classList.add('correct');
-      this.points += LEVELS[this.level].points;
+    if (result) {
+      card.classList.add(card, CARD_STATES.CORRECT);
 
-      setTimeout(() => {
-        card.classList.remove('correct');
-        this.generateBoard();
-      }, 1000);
+      this.removeClassForHtmlElement(CARD_STATES.CORRECT);
     } else {
-      card.classList.add('wrong');
+      card.classList.add(CARD_STATES.WRONG);
 
-      setTimeout(() => {
-        card.classList.remove('wrong');
-
-        // TODO change the alert to a message in the UI
-        alert('Game Over!'); // End the game if the selection is wrong
-        this.isGameStarted = false;
-      }, 1000);
+      this.removeClassForHtmlElement(card, CARD_STATES.WRONG);
     }
   }
 
-  // Update the difficulty level when the user selects a new one
   handleLevelChange(event) {
-    this.level = event.target.value;
-    this.generateBoard();
+    this.gameLogic.changeLevel(event.target.value);
   }
 
-  // Render the game UI
   render() {
     return html`
       <div>
-        <h1 class="title">${this.t('gameView.welcome')} ${this.playerName} 🙋</h1>
+        <h1>${this.t('gameView.welcome')} ${this.playerName} 🙋</h1>
         <p>${this.t('gameView.points')} ${this.points}</p>
-
         <label>
           ${this.t('gameView.level')}
-          <select class="level" @change="${this.handleLevelChange}">
+          <select @change="${this.handleLevelChange}">
             ${DIFFICULTY_LEVEL.map(
               (level) => html`
                 <option value="${level}" ?selected="${this.level === level}">
@@ -145,7 +113,7 @@ class GameView extends i18nMixin(LitElement) {
           </select>
         </label>
 
-        <btn-action text="${this.t('gameView.play')}" @btn-click=${this.startGame}></btn-action>
+        <btn-action text="${this.t('gameView.play')}" @btn-click="${this.startGame}"></btn-action>
 
         ${this.isGameStarted
           ? html`
@@ -163,7 +131,7 @@ class GameView extends i18nMixin(LitElement) {
               </div>
               <p>
                 ${this.t('gameView.rememberNumber')}
-                <span class="game-board__number">${this.currentNumber}</span>
+                <span class="remember-number">${this.currentNumber}</span>
               </p>
             `
           : ''}

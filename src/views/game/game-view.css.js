@@ -8,11 +8,6 @@ export default css`
     margin: 1.25rem auto;
   }
 
-  .game-board__number {
-    color: #f6ae2d;
-    font-size: 1.5rem;
-  }
-
   .card {
     align-items: center;
     border: 0.125rem solid #edf2f4;
@@ -36,10 +31,12 @@ export default css`
 
   .card.correct {
     background-color: #4caf50;
+    transition: background-color 0.5s ease;
   }
 
   .card.wrong {
     background-color: #dc143c;
+    transition: background-color 0.5s ease;
   }
 
   .card:hover {
@@ -58,5 +55,10 @@ export default css`
     padding: 0.5rem;
     text-align: center;
     width: 7rem;
+  }
+
+  .remember-number {
+    color: #f6ae2d;
+    font-size: 1.5rem;
   }
 `;
