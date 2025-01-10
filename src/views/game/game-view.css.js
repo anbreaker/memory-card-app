@@ -11,7 +11,7 @@ export default css`
   .card {
     align-items: center;
     border: 0.125rem solid #edf2f4;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     cursor: pointer;
     display: flex;
     font-size: 1.25rem;
@@ -32,12 +32,12 @@ export default css`
 
   .card.correct {
     background-color: #4caf50;
-    transition: background-color 0.5s ease;
+    transition: background-color 0.3s ease;
   }
 
   .card.wrong {
     background-color: #dc143c;
-    transition: background-color 0.5s ease;
+    transition: background-color 0.3s ease;
   }
 
   .card:hover {

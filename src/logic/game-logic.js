@@ -1,5 +1,6 @@
 import { CARD_BOX, LEVELS } from '../constants/game-constants.js';
 
+// Extends the EventTarget class to use addEventListener and dispatchEvent
 export class GameLogic extends EventTarget {
   constructor(playerName, defaultLevel) {
     super();

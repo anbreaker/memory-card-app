@@ -7,7 +7,7 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    color: aliceblue;
+    color: #edf2f4;
     display: block;
     font-family: Arial, sans-serif;
     height: 100vh;

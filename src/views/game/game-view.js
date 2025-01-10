@@ -7,6 +7,7 @@ import i18n from '../../i18n/i18n.js';
 // Components
 import '../../components/btn-action/btn-action.js';
 import '../../components/countdown-timer/countdown-timer.js';
+import '../../components/text-dialog/text-dialog.js';
 
 // Constants
 import {
@@ -39,6 +40,7 @@ class GameView extends i18nMixin(LitElement) {
    * @property {Array} numbers - The array of numbers used in the game.
    * @property {string} playerName - The name of the player.
    * @property {number} points - The current points of the player.
+   * @property {boolean} showModal - Indicates whether a modal is shown.
    * @property {boolean} visibleNumbers - Indicates whether the numbers are visible.
    */
   static get properties() {
@@ -49,6 +51,7 @@ class GameView extends i18nMixin(LitElement) {
       numbers: { type: Array },
       playerName: { type: String },
       points: { type: Number },
+      showModal: { type: Boolean },
       visibleNumbers: { type: Boolean },
     };
   }
@@ -61,15 +64,17 @@ class GameView extends i18nMixin(LitElement) {
    */
   constructor() {
     super();
+
     const playerName = localStorage.getItem('playerName') || DEFAULT_PLAYER_NAME;
     this.gameLogic = new GameLogic(playerName, DEFAULT_LEVEL);
     this.t = i18n.t;
 
-    // Synchronize initial status
-    this.syncWithLogic();
-
     // Listening for level status change events
     this.gameLogic.addEventListener('level-change', () => this.syncWithLogic());
+    this.showModal = false;
+
+    // Synchronize initial status
+    this.syncWithLogic();
   }
 
   /**
@@ -96,6 +101,7 @@ class GameView extends i18nMixin(LitElement) {
   startGame() {
     this.gameLogic.startGame();
 
+    this.showModal = false;
     this.initCountdownTimer();
   }
 
@@ -127,9 +133,8 @@ class GameView extends i18nMixin(LitElement) {
 
     // Wait 1 second before removing the class
     setTimeout(() => {
-      // TODO change for message error UI
       if (className === CARD_STATES.WRONG) {
-        alert('Game Over!');
+        this.showModal = true;
       }
 
       element.classList.remove(className);
@@ -150,10 +155,9 @@ class GameView extends i18nMixin(LitElement) {
 
       this.removeClassForHtmlElement(card, CARD_STATES.CORRECT);
 
-      // TODO ver como hacer un delay para que se muestre el contador bien
       setTimeout(() => {
-        this.initCountdownTimer(), 1000;
-      });
+        this.initCountdownTimer();
+      }, 1500); // Delay for init countdown timer (Animation time)
     } else {
       card.classList.add(CARD_STATES.WRONG);
 
@@ -205,6 +209,12 @@ class GameView extends i18nMixin(LitElement) {
             )}
           </select>
         </label>
+
+        <text-dialog
+          ?open="${this.showModal}"
+          text="${this.t('modalDialog.message')} ${this.points}"
+          title="${this.t('modalDialog.gameOver')}"
+        ></text-dialog>
 
         <btn-action text="${this.t('gameView.play')}" @btn-click="${this.startGame}"></btn-action>
 
