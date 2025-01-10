@@ -1,22 +1,28 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import Locales from 'i18next-http-backend'; // Local JSON's
 
-/**
- * i18next is an internationalization-framework written in and for JavaScript.
- */
-i18n
-  .use(Locales)
-  .use(LanguageDetector)
-  .init({
-    fallbackLng: 'en', // default language
-    debug: true,
-    interpolation: {
-      escapeValue: false, // i18next does not escape HTML defaults
+// Translations
+import { en } from './locales/en';
+import { es } from './locales/es';
+import { pt } from './locales/pt';
+
+i18n.use(LanguageDetector).init({
+  debug: true, // Show logs
+  fallbackLng: 'en', // Language by default
+  interpolation: {
+    escapeValue: false, // i18next does not escape HTML
+  },
+  resources: {
+    en: {
+      translation: en,
     },
-    backend: {
-      loadPath: 'src/i18n/locales/{{lng}}.json', // Path where JSON files are located
+    es: {
+      translation: es,
     },
-  });
+    pt: {
+      translation: pt,
+    },
+  },
+});
 
 export default i18n;
