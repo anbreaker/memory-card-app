@@ -25,5 +25,10 @@
     "spanish": "Spanish",
     "start": "Start Game",
     "title": "Memory Card App"
+  },
+  "modalDialog": {
+    "gameOver": "Game Over!",
+    "message": "Your score was: ",
+    "playAgain": "Play Again"
   }
 }

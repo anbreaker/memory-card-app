@@ -25,5 +25,10 @@
     "spanish": "Español",
     "start": "Iniciar Juego",
     "title": "Juego de Memoria"
+  },
+  "modalDialog": {
+    "gameOver": "¡Fin del Juego!",
+    "message": "Tu puntuación ha sido de: ",
+    "playAgain": "Jugar de nuevo"
   }
 }
