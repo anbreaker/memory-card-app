@@ -1,9 +1,12 @@
-import { CARD_BOX, LEVELS } from '../constants/game-constants.js';
+import { CARD_BOX, DEFAULT_LEVEL, LEVELS } from '../constants/game-constants.js';
 
-// Extends the EventTarget class to use addEventListener and dispatchEvent
-export class GameLogic extends EventTarget {
+class GameLogic extends EventTarget {
   constructor(playerName, defaultLevel) {
     super();
+
+    if (GameLogic.instance) {
+      return GameLogic.instance; // Returns the existing instance
+    }
 
     this.currentNumber = null;
     this.isGameStarted = false;
@@ -13,6 +16,8 @@ export class GameLogic extends EventTarget {
     this.points = 0;
     this.timeLimit = LEVELS[defaultLevel].speed;
     this.visibleNumbers = false;
+
+    GameLogic.instance = this; // Saves the single instance
   }
 
   _notifyLevelChange() {
@@ -79,3 +84,6 @@ export class GameLogic extends EventTarget {
     this._notifyLevelChange();
   }
 }
+
+const gameLogicInstance = new GameLogic('Default Player', DEFAULT_LEVEL);
+export default gameLogicInstance;

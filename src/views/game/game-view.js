@@ -19,7 +19,7 @@ import {
 } from '../../constants/game-constants.js';
 
 // Logic from the game
-import { GameLogic } from '../../logic/game-logic.js';
+import gameLogicInstance from '../../logic/game-logic.js';
 
 // Styles
 import gameStyles from './game-view.css.js';
@@ -40,7 +40,7 @@ class GameView extends i18nMixin(LitElement) {
    * @property {Array} numbers - The array of numbers used in the game.
    * @property {string} playerName - The name of the player.
    * @property {number} points - The current points of the player.
-   * @property {boolean} showModal - Indicates whether a modal is shown.
+   * @property {boolean} showMessage - Indicates whether a message is shown.
    * @property {boolean} visibleNumbers - Indicates whether the numbers are visible.
    */
   static get properties() {
@@ -51,7 +51,7 @@ class GameView extends i18nMixin(LitElement) {
       numbers: { type: Array },
       playerName: { type: String },
       points: { type: Number },
-      showModal: { type: Boolean },
+      showMessage: { type: Boolean },
       visibleNumbers: { type: Boolean },
     };
   }
@@ -65,16 +65,19 @@ class GameView extends i18nMixin(LitElement) {
   constructor() {
     super();
 
-    const playerName = localStorage.getItem('playerName') || DEFAULT_PLAYER_NAME;
-    this.gameLogic = new GameLogic(playerName, DEFAULT_LEVEL);
-    this.t = i18n.t;
+    this.playerName = localStorage.getItem('playerName') || DEFAULT_PLAYER_NAME;
+    this.gameLogic = gameLogicInstance;
+    this.gameLogic.playerName = this.playerName;
+    this.gameLogic.level = DEFAULT_LEVEL;
 
     // Listening for level status change events
     this.gameLogic.addEventListener('level-change', () => this.syncWithLogic());
-    this.showModal = false;
+    this.showMessage = false;
 
     // Synchronize initial status
     this.syncWithLogic();
+
+    this.t = i18n.t;
   }
 
   /**
@@ -101,7 +104,7 @@ class GameView extends i18nMixin(LitElement) {
   startGame() {
     this.gameLogic.startGame();
 
-    this.showModal = false;
+    this.showMessage = false;
     this.initCountdownTimer();
   }
 
@@ -134,7 +137,7 @@ class GameView extends i18nMixin(LitElement) {
     // Wait 1 second before removing the class
     setTimeout(() => {
       if (className === CARD_STATES.WRONG) {
-        this.showModal = true;
+        this.showMessage = true;
       }
 
       element.classList.remove(className);
@@ -211,7 +214,7 @@ class GameView extends i18nMixin(LitElement) {
         </label>
 
         <text-dialog
-          ?open="${this.showModal}"
+          ?open="${this.showMessage}"
           text="${this.t('modalDialog.message')} ${this.points}"
           title="${this.t('modalDialog.gameOver')}"
         ></text-dialog>
