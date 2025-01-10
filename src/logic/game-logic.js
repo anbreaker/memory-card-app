@@ -39,7 +39,7 @@ class GameLogic extends EventTarget {
   generateBoard() {
     this.numbers = this.generateShuffledNumbers(CARD_BOX);
     this.currentNumber = this.numbers[Math.floor(Math.random() * CARD_BOX)];
-    this.timeLimit = LEVELS[this.level].speed;
+    this.timeLimit = LEVELS[this.level]?.speed;
     this.visibleNumbers = true;
     this._notifyLevelChange();
 
