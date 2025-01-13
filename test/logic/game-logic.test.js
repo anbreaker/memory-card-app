@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 // Logic
-import gameLogicInstance from '../../src/logic/game-logic.js';
+import gameLogicInstance from '../../src/services/game-logic.js';
 
 // Constants
 import { LEVELS, DEFAULT_LEVEL, CARD_BOX } from '../../src/constants/game-constants.js';

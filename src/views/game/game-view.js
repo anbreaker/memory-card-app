@@ -16,10 +16,11 @@ import {
   DEFAULT_PLAYER_NAME,
   DIFFICULTY_LEVEL,
   LEVELS,
+  ONE_SECOND,
 } from '../../constants/game-constants.js';
 
 // Logic from the game
-import gameLogicInstance from '../../logic/game-logic.js';
+import gameLogicInstance from '../../services/game-logic.js';
 
 // Styles
 import gameStyles from './game-view.css.js';
@@ -70,14 +71,29 @@ class GameView extends i18nMixin(LitElement) {
     this.gameLogic.playerName = this.playerName;
     this.gameLogic.level = DEFAULT_LEVEL;
 
-    // Listening for level status change events
+    this.t = i18n.t;
+  }
+
+  // TODO
+  // 1000 ms = 1s constante
+  // sacar varios renders
+  // logic por services
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    // Listening for level status change events (for maintaining context ()=>{})
     this.gameLogic.addEventListener('level-change', () => this.syncWithLogic());
-    this.showMessage = false;
 
     // Synchronize initial status
     this.syncWithLogic();
+  }
 
-    this.t = i18n.t;
+  disconnectedCallback() {
+    super.disconnectedCallback();
+
+    // disconnect the component (for maintaining context ()=>{})
+    this.gameLogic.removeEventListener('level-change', () => this.syncWithLogic());
   }
 
   /**
@@ -141,7 +157,7 @@ class GameView extends i18nMixin(LitElement) {
       }
 
       element.classList.remove(className);
-    }, 1000);
+    }, ONE_SECOND);
   }
 
   /**
