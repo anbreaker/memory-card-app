@@ -26,7 +26,7 @@ export const pt = {
     start: 'Iniciar Jogo',
     title: 'Jogo de Memória',
   },
-  modalDialog: {
+  textDialog: {
     gameOver: 'Fim do Jogo!',
     message: 'Sua pontuação foi de: ',
     playAgain: 'Jogar novamente',

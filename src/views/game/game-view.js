@@ -231,8 +231,8 @@ class GameView extends i18nMixin(LitElement) {
 
         <text-dialog
           ?open="${this.showMessage}"
-          text="${this.t('modalDialog.message')} ${this.points}"
-          title="${this.t('modalDialog.gameOver')}"
+          text="${this.t('textDialog.message')} ${this.points}"
+          title="${this.t('textDialog.gameOver')}"
         ></text-dialog>
 
         <btn-action text="${this.t('gameView.play')}" @btn-click="${this.startGame}"></btn-action>

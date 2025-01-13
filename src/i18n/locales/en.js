@@ -26,7 +26,7 @@ export const en = {
     start: 'Start Game',
     title: 'Memory Card App',
   },
-  modalDialog: {
+  textDialog: {
     gameOver: 'Game Over!',
     message: 'Your score was: ',
     playAgain: 'Play Again',
