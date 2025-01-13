@@ -67,7 +67,7 @@ The coverage report will be generated in the coverage folder. You can open the i
 ## Coverage results
 
 ```bash
- ✓ test/app-root.test.js (6) 359ms
+ ✓ test/app-root.test.js (6)
  ✓ test/i18n/i18n.test.js (4)
  ✓ test/logic/game-logic.test.js (6)
  ✓ test/components/animated-wave-background/animated-wave-background.test.js (3)
@@ -75,57 +75,61 @@ The coverage report will be generated in the coverage folder. You can open the i
  ✓ test/components/countdown-timer/countdown-timer.test.js (5)
  ✓ test/components/error-message/error-message.test.js (5)
  ✓ test/components/language-selector/language-selector.test.js (6)
- ✓ test/views/home/home-view.test.js (4)
- ✓ test/views/game/game-view.test.js (9)
  ✓ test/components/text-dialog/text-dialog.test.js (4)
+ ✓ test/views/game/game-view.test.js (9)
+ ✓ test/views/home/home-view.test.js (4)
 
  Test Files  11 passed (11)
       Tests  58 passed (58)
-   Start at  11:41:19
-   Duration  7.43s (transform 67ms, setup 0ms, collect 306ms, tests 613ms, environment 2.40s, prepare 452ms)
+   Start at  14:03:51
+   Duration  7.57s (transform 75ms, setup 0ms, collect 337ms, tests 632ms, environment 2.57s, prepare 519ms)
 
  % Coverage report from v8
------------------------------------------|---------|----------|---------|---------|-------------------
-File                                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
------------------------------------------|---------|----------|---------|---------|-------------------
-All files                                |    97.6 |    92.47 |   96.82 |    97.6 |                   
- src                                     |     100 |      100 |     100 |     100 |                   
-  app-root.css.js                        |     100 |      100 |     100 |     100 |                   
-  app-root.js                            |     100 |      100 |     100 |     100 |                   
- src/components/animated-wave-background |     100 |      100 |     100 |     100 |                   
-  animated-wave-background.css.js        |     100 |      100 |     100 |     100 |                   
-  animated-wave-background.js            |     100 |      100 |     100 |     100 |                   
- src/components/btn-action               |     100 |      100 |     100 |     100 |                   
-  btn-action.css.js                      |     100 |      100 |     100 |     100 |                   
-  btn-action.js                          |     100 |      100 |     100 |     100 |                   
- src/components/countdown-timer          |   91.13 |    88.88 |     100 |   91.13 |                   
-  countdown-timer.css.js                 |     100 |      100 |     100 |     100 |                   
-  countdown-timer.js                     |   87.27 |    88.88 |     100 |   87.27 | 46-52             
- src/components/error-message            |     100 |      100 |     100 |     100 |                   
-  error-message.css.js                   |     100 |      100 |     100 |     100 |                   
-  error-message.js                       |     100 |      100 |     100 |     100 |                   
- src/components/language-selector        |     100 |    85.71 |     100 |     100 |                   
-  language-selector.css.js               |     100 |      100 |     100 |     100 |                   
-  language-selector.js                   |     100 |    85.71 |     100 |     100 | 40                
- src/components/text-dialog              |     100 |      100 |     100 |     100 |                   
-  text-dialog.css.js                     |     100 |      100 |     100 |     100 |                   
-  text-dialog.js                         |     100 |      100 |     100 |     100 |                   
- src/constants                           |     100 |      100 |     100 |     100 |                   
-  game-constants.js                      |     100 |      100 |     100 |     100 |                   
-  language-constants.js                  |     100 |      100 |     100 |     100 |                   
- src/i18n                                |     100 |      100 |     100 |     100 |                   
-  i18n.js                                |     100 |      100 |     100 |     100 |                   
- src/logic                               |   93.25 |    93.33 |     100 |   93.25 |                   
-  game-logic.js                          |   93.25 |    93.33 |     100 |   93.25 | 8-9,64-65,74-75   
- src/mixins                              |   95.34 |      100 |      75 |   95.34 |                   
-  i18n-mixin.js                          |   95.34 |      100 |      75 |   95.34 | 44-45             
- src/views/game                          |    96.1 |       85 |     100 |    96.1 |                   
-  game-view.css.js                       |     100 |      100 |     100 |     100 |                   
-  game-view.js                           |   95.06 |       85 |     100 |   95.06 | 139-143,157-163   
- src/views/home                          |   95.89 |     87.5 |   85.71 |   95.89 |                   
-  home-view.css.js                       |     100 |      100 |     100 |     100 |                   
-  home-view.js                           |   94.54 |     87.5 |   85.71 |   94.54 | 48-50,61-63       
------------------------------------------|---------|----------|---------|---------|-------------------
+-----------------------------------------|---------|----------|---------|---------|-----------------------
+File                                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+-----------------------------------------|---------|----------|---------|---------|-----------------------
+All files                                |   97.66 |     92.7 |   96.96 |   97.66 |                       
+ src                                     |     100 |      100 |     100 |     100 |                       
+  app-root.css.js                        |     100 |      100 |     100 |     100 |                       
+  app-root.js                            |     100 |      100 |     100 |     100 |                       
+ src/components/animated-wave-background |     100 |      100 |     100 |     100 |                       
+  animated-wave-background.css.js        |     100 |      100 |     100 |     100 |                       
+  animated-wave-background.js            |     100 |      100 |     100 |     100 |                       
+ src/components/btn-action               |     100 |      100 |     100 |     100 |                       
+  btn-action.css.js                      |     100 |      100 |     100 |     100 |                       
+  btn-action.js                          |     100 |      100 |     100 |     100 |                       
+ src/components/countdown-timer          |   91.25 |    88.88 |     100 |   91.25 |                       
+  countdown-timer.css.js                 |     100 |      100 |     100 |     100 |                       
+  countdown-timer.js                     |    87.5 |    88.88 |     100 |    87.5 | 49-55                 
+ src/components/error-message            |     100 |      100 |     100 |     100 |                       
+  error-message.css.js                   |     100 |      100 |     100 |     100 |                       
+  error-message.js                       |     100 |      100 |     100 |     100 |                       
+ src/components/language-selector        |     100 |    85.71 |     100 |     100 |                       
+  language-selector.css.js               |     100 |      100 |     100 |     100 |                       
+  language-selector.js                   |     100 |    85.71 |     100 |     100 | 37                    
+ src/components/text-dialog              |     100 |      100 |     100 |     100 |                       
+  text-dialog.css.js                     |     100 |      100 |     100 |     100 |                       
+  text-dialog.js                         |     100 |      100 |     100 |     100 |                       
+ src/constants                           |     100 |      100 |     100 |     100 |                       
+  game-constants.js                      |     100 |      100 |     100 |     100 |                       
+  language-constants.js                  |     100 |      100 |     100 |     100 |                       
+ src/i18n                                |     100 |      100 |     100 |     100 |                       
+  i18n.js                                |     100 |      100 |     100 |     100 |                       
+ src/i18n/locales                        |     100 |      100 |     100 |     100 |                       
+  en.js                                  |     100 |      100 |     100 |     100 |                       
+  es.js                                  |     100 |      100 |     100 |     100 |                       
+  pt.js                                  |     100 |      100 |     100 |     100 |                       
+ src/mixins                              |     100 |      100 |     100 |     100 |                       
+  i18n-mixin.js                          |     100 |      100 |     100 |     100 |                       
+ src/services                            |   95.38 |    93.75 |     100 |   95.38 |                       
+  game-logic.js                          |   95.38 |    93.75 |     100 |   95.38 | 12-13,98-99,109-110   
+ src/views/game                          |   94.65 |    85.71 |   91.66 |   94.65 |                       
+  game-view.css.js                       |     100 |      100 |     100 |     100 |                       
+  game-view.js                           |   93.28 |    85.71 |   91.66 |   93.28 | 88-92,150-154,168-174 
+ src/views/home                          |   95.89 |     87.5 |   85.71 |   95.89 |                       
+  home-view.css.js                       |     100 |      100 |     100 |     100 |                       
+  home-view.js                           |   94.54 |     87.5 |   85.71 |   94.54 | 48-50,61-63           
+-----------------------------------------|---------|----------|---------|---------|-----------------------
 ```
 
 ## Project Structure
