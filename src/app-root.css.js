@@ -20,7 +20,13 @@ export default css`
   .logo {
     padding: 1.25rem;
     position: absolute;
-    width: 5rem;
+    width: 4rem;
+  }
+
+  .logo:hover {
+    transform: rotate(10deg);
+    transform: rotate(-10deg);
+    transition: all 300ms;
   }
 
   #game {
@@ -29,5 +35,11 @@ export default css`
     justify-content: center;
     min-height: 100vh;
     text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .logo {
+      width: 2.5rem;
+    }
   }
 `;

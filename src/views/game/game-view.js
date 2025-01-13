@@ -207,7 +207,7 @@ class GameView extends i18nMixin(LitElement) {
   render() {
     return html`
       <div>
-        <h1>${this.t('gameView.welcome')} ${this.playerName} 🙋</h1>
+        <h1 class="welcome">${this.t('gameView.welcome')} ${this.playerName} 🙋</h1>
         <p>${this.t('gameView.points')} ${this.points}</p>
         <countdown-timer></countdown-timer>
 

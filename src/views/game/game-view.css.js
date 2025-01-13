@@ -27,7 +27,7 @@ export default css`
 
   .card.visible {
     background-color: transparent;
-    pointer-events: none; /* Block clicks without Js*/
+    pointer-events: none; /* Block clicks without Js */
   }
 
   .card.correct {
@@ -49,7 +49,7 @@ export default css`
   }
 
   .level {
-    background: lightgray;
+    background: #d3d3d3;
     border-radius: 0.5rem;
     font-size: 1rem;
     margin: 0.625rem;
@@ -61,5 +61,27 @@ export default css`
   .remember-number {
     color: #f6ae2d;
     font-size: 1.5rem;
+  }
+
+  /* Media query for mobile devices */
+  @media (max-width: 600px) {
+    .game-board {
+      gap: 0.2rem;
+      margin: 1rem auto;
+    }
+
+    .card {
+      font-size: 1rem;
+      height: 5rem;
+      width: 5rem;
+    }
+
+    .remember-number {
+      font-size: 1.2rem;
+    }
+
+    .welcome {
+      font-size: 1.2rem;
+    }
   }
 `;
