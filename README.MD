@@ -158,22 +158,25 @@ All files                                |    97.6 |    92.47 |   96.82 |    97.
 │   │   ├── error-message
 │   │   │   ├── error-message.css.js
 │   │   │   └── error-message.js
-│   │   └── language-selector
-│   │       ├── language-selector.css.js
-│   │       └── language-selector.js
+│   │   ├── language-selector
+│   │   │   ├── language-selector.css.js
+│   │   │   └── language-selector.js
+│   │   └── text-dialog
+│   │       ├── text-dialog.css.js
+│   │       └── text-dialog.js
 │   ├── constants
 │   │   ├── game-constants.js
 │   │   └── language-constants.js
 │   ├── i18n
 │   │   ├── i18n.js
 │   │   └── locales
-│   │       ├── en.json
-│   │       ├── es.json
-│   │       └── pt.json
-│   ├── logic
-│   │   └── game-logic.js
+│   │       ├── en.js
+│   │       ├── es.js
+│   │       └── pt.js
 │   ├── mixins
 │   │   └── i18n-mixin.js
+│   ├── services
+│   │   └── game-logic.js
 │   └── views
 │       ├── game
 │       │   ├── game-view.css.js
@@ -192,15 +195,21 @@ All files                                |    97.6 |    92.47 |   96.82 |    97.
 │   │   │   └── countdown-timer.test.js
 │   │   ├── error-message
 │   │   │   └── error-message.test.js
-│   │   └── language-selector
-│   │       └── language-selector.test.js
+│   │   ├── language-selector
+│   │   │   └── language-selector.test.js
+│   │   └── text-dialog
+│   │       └── text-dialog.test.js
 │   ├── i18n
 │   │   └── i18n.test.js
+│   ├── logic
+│   │   └── game-logic.test.js
 │   └── views
 │       ├── game
 │       │   └── game-view.test.js
 │       └── home
 │           └── home-view.test.js
+├── vercel.json
+├── vite.config.js
 └── vitest.config.js
 ```
 
@@ -212,7 +221,15 @@ All files                                |    97.6 |    92.47 |   96.82 |    97.
   npm run build
   ```
 
-2. Serve the generated `dist` folder with a static server like `serve` or deploy it on platforms like Netlify.
+2. Serve the generated `dist` folder with a static server like `serve` or deploy it on platforms like gh-pages, Netlify, Render, Vercel...
+
+## Example Production Deployment
+
+The application is deployed using Vercel and accessible via the following URL:
+
+- **Web Application**: [Memory Card App](https://memory-card-app-gamma.vercel.app/)
+
+Visit the link to see the live version of the application.
 
 ## Technical Characteristics
 
