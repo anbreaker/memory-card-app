@@ -23,7 +23,6 @@ describe('AppRoot', () => {
     expect(waveBackground).not.toBeNull(); // Verify than element exists
   });
 
-  // TODO not working
   test('should navigate to the home view on "/"', async () => {
     const container = document.createElement('div');
     document.body.appendChild(container);

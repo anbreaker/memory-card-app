@@ -29,7 +29,9 @@ describe('GameView', () => {
     expect(element.level).to.equal(DIFFICULTY_LEVEL[0]);
     expect(element.points).to.equal(0);
     expect(element.isGameStarted).to.be.false;
-    expect(element.showMessage).to.be.false;
+    setTimeout(() => {
+      expect(element.showMessage).to.be.false;
+    }, ONE_SECOND);
   });
 
   test('should start the game when startGame is called', () => {

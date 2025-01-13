@@ -40,7 +40,6 @@ describe('GameLogic', () => {
     expect(gameLogicInstance.points).toBe(LEVELS[DEFAULT_LEVEL].points);
   });
 
-  // TODO
   it('should handle wrong card click', () => {
     gameLogicInstance.startGame();
     gameLogicInstance.visibleNumbers = false;

@@ -74,11 +74,6 @@ class GameView extends i18nMixin(LitElement) {
     this.t = i18n.t;
   }
 
-  // TODO
-  // 1000 ms = 1s constante
-  // sacar varios renders
-  // logic por services
-
   connectedCallback() {
     super.connectedCallback();
 

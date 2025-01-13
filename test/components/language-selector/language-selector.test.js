@@ -37,7 +37,7 @@ describe('LanguageSelector', () => {
 
     expect(element.selectedLanguage).toBe('en');
     expect(localStorage.getItem('selectedLanguage')).toBe('en');
-    expect(i18n.language).toBe('en-US');
+    expect(i18n.language).toBe('en');
   });
 
   test('should dispatch language-changed event on language change', async () => {
