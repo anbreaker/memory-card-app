@@ -1,5 +1,9 @@
 # Memory Card App - PWA
 
+### **Game Memory Card App**: [https://memory-card-app-gamma.vercel.app/](https://memory-card-app-gamma.vercel.app/)
+
+Welcome to the Memory Card App! Click the link above to start playing and test your memory skills. Enjoy the game and challenge yourself to remember the correct cards!
+
 ## Description
 
 Welcome to Memory Card App, a progressive web application (PWA) based on the classic game “Memory Card App”. The app allows users to register their name, select difficulty levels and earn points by “remembering” the correct number and card that appear randomly on a grid.
@@ -17,7 +21,7 @@ Welcome to Memory Card App, a progressive web application (PWA) based on the cla
 1. Clone the repository:
 
   ```sh
-  git clone https://github.com/...
+  https://github.com/anbreaker/memory-card-app.git
   ```
 
 2. Navigate to the project directory:
@@ -32,15 +36,15 @@ Welcome to Memory Card App, a progressive web application (PWA) based on the cla
   npm install
   ```
 
-## How to use
+## How to use in development mode
 
 1. Start the application:
 
   ```bash
-  npm start
+  npm run dev
   ```
 
-2. Open your browser and navigate to `http://localhost:5173`.
+2. Open your browser and navigate to `http://localhost:5173`
 
 ## Test
 
