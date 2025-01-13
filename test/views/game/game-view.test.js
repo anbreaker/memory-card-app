@@ -9,7 +9,7 @@ import '../../../src/components/countdown-timer/countdown-timer.js';
 import '../../../src/components/text-dialog/text-dialog.js';
 
 // Constants
-import { DIFFICULTY_LEVEL } from '../../../src/constants/game-constants.js';
+import { DIFFICULTY_LEVEL, ONE_SECOND } from '../../../src/constants/game-constants.js';
 
 describe('GameView', () => {
   let element;
@@ -56,7 +56,7 @@ describe('GameView', () => {
     element.removeClassForHtmlElement(null, 'wrong');
     setTimeout(() => {
       expect(element.showMessage).to.be.true;
-    }, 1000);
+    }, ONE_SECOND);
   });
 
   test('should render the correct number of cards', async () => {

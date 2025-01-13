@@ -1,6 +1,10 @@
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 
+// Component
 import { CountdownTimer } from '../../../src/components/countdown-timer/countdown-timer.js';
+
+// Constants
+import { ONE_SECOND } from '../../../src/constants/game-constants.js';
 
 describe('CountdownTimer', () => {
   let element;
@@ -34,7 +38,7 @@ describe('CountdownTimer', () => {
 
     setTimeout(() => {
       expect(element.time).toBe(1);
-    }, 1000);
+    }, ONE_SECOND);
 
     setTimeout(() => {
       expect(element.time).toBe(0);

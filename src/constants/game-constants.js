@@ -51,3 +51,9 @@ export const DEFAULT_PLAYER_NAME = '';
  * @constant {string[]}
  */
 export const DIFFICULTY_LEVEL = Object.keys(LEVELS);
+
+/**
+ * The number of milliseconds in a second.
+ * @constant {number}
+ */
+export const ONE_SECOND = 1000;

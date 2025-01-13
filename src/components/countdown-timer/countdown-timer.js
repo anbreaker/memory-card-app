@@ -4,6 +4,9 @@ import { LitElement, html } from 'lit';
 import { i18nMixin } from '../../mixins/i18n-mixin.js';
 import i18n from '../../i18n/i18n.js';
 
+// Constants
+import { ONE_SECOND } from '../../constants/game-constants.js';
+
 // Styles
 import countdownTimerStyles from './countdown-timer.css.js';
 
@@ -50,7 +53,7 @@ export class CountdownTimer extends i18nMixin(LitElement) {
         clearInterval(this.interval); // Stops the timer when it reaches 0
         this.running = false;
       }
-    }, 1000); // Updates every second
+    }, ONE_SECOND); // Updates every second
   }
 
   stopCountdown() {
