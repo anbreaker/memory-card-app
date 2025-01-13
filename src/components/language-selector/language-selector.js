@@ -4,9 +4,6 @@ import { LitElement, html } from 'lit';
 import { i18nMixin } from '../../mixins/i18n-mixin.js';
 import i18n from '../../i18n/i18n.js';
 
-// Components
-import '../../components/btn-action/btn-action.js';
-
 // Styles
 import stylesLanguageSelector from './language-selector.css.js';
 
