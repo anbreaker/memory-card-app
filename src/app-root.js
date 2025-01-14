@@ -2,11 +2,10 @@ import { LitElement, html } from 'lit';
 import { Router } from '@vaadin/router';
 
 // Internationalization
-import { i18nMixin } from './mixins/i18n-mixin.js'; // Importar el mixin
+import { i18nMixin } from './mixins/i18n-mixin.js';
 
 // Components
 import './components/animated-wave-background/animated-wave-background.js';
-import './components/error-message/error-message.js';
 import './components/language-selector/language-selector.js';
 
 // Views
@@ -107,7 +106,7 @@ class AppRoot extends i18nMixin(LitElement) {
         </nav>
 
         <div id="game"></div>
-        <error-message></error-message>
+
         <animated-wave-background></animated-wave-background>
       </div>
     `;
