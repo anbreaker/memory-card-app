@@ -21,6 +21,8 @@ export const i18nMixin = (Base) =>
      */
     connectedCallback() {
       super.connectedCallback();
+
+      // Bind the updateTranslations method to the current instance other method is use arrow function (for maintaining context ()=>{})
       this.updateTranslations = this.updateTranslations.bind(this);
       i18n.on('languageChanged', this.updateTranslations);
     }
@@ -33,6 +35,9 @@ export const i18nMixin = (Base) =>
      */
     disconnectedCallback() {
       super.disconnectedCallback();
+
+      // Bind the updateTranslations method to the current instance other method is use arrow function (for maintaining context ()=>{})
+      this.updateTranslations = this.updateTranslations.bind(this);
       i18n.off('languageChanged', this.updateTranslations);
     }
 
